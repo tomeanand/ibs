@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+    <constant name="struts.multipart.saveDir" value="D:/temp" />
+    
+	<package name="basicstruts2" extends="struts-default">
+	    <!--  define global exception -->
+		<global-exception-mappings>
+         	<exception-mapping exception="java.lang.Exception" result="error" />
+     	</global-exception-mappings>
+	 
+	  	<action name="indexU">
+			<result>/jsp/login.jsp</result> 
+	  	</action>
+      	<action name="services" class="com.efile.action.ServiceAction" method="execute">
+        	<result name="success">/jsp/services.jsp</result>
+       	</action>
+        <action name="about" class="com.efile.action.AboutAction" method="execute">
+        	<result name="success">/jsp/about.jsp</result>
+       	</action>
+       
+        <action name="account" class="com.efile.action.AccountAction" method="execute">
+        	<result name="success">/jsp/accounting.jsp</result>
+       	</action>
+       	
+        <action name="clients" class="com.efile.action.ClientAction" method="execute">
+        	<result name="success">/jsp/clients.jsp</result>
+       	</action>
+       	
+       	<action name="contact" class="com.efile.action.ContactAction" method="execute">
+        	<result name="success">/jsp/contact.jsp</result>
+       	</action>
+
+        <action name="login" class="com.efile.action.LoginAction" method="execute">
+        	<result name="success">/jsp/mypage.jsp</result>
+           	<result name="failure">/jsp/login.jsp</result>
+           	<result name="error" type="redirectAction"><param name="actionName">error</param></result>
+       	</action>
+       	<action name="createprofile" class="com.efile.action.CreateProfileAction" method="execute">
+        	<result name="success">/jsp/createprofile.jsp</result>
+       	</action>
+       
+        <action name="createprofileSave" class="com.efile.action.CreateProfileAction" method="save">
+        	<result name="success">/jsp/mypage.jsp</result>
+        	<result name="error" type="redirectAction"><param name="actionName">error</param></result>
+       	</action>
+       
+       	<action name="error" class="com.efile.action.ErrorAction" method="execute">
+        	<result name="error">/jsp/error.jsp</result>
+       	</action>
+        <!--  upload action -->
+      	<action name="UploadMyFile" class="com.efile.action.MultipleFileUploadAction" method="upload">
+      		<param name="saveDir">D://temp</param>
+        	<interceptor-ref name="defaultStack">
+        	</interceptor-ref>
+        	<result name="input">/jsp/upload.jsp</result>
+			<result name="success">/jsp/upload.jsp</result>
+			<result name="error" type="redirectAction"><param name="actionName">error</param></result>
+		</action>
+
+	</package>
+
+</struts>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+  <!-- enter the files which needs to excludes from the decorator -->
+	<excludes>
+		<pattern>/jsp/login.jsp</pattern>
+		<pattern>/jsp/upload.jsp</pattern>
+		<pattern>/jsp/createprofile.jsp</pattern>
+		<pattern>/jsp/error.jsp</pattern>
+	</excludes>
+	<decorator name="layout" page="layout.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+</decorators>
